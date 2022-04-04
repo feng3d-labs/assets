@@ -1,18 +1,18 @@
-import { AssetType, setAssetTypeClass, TextureCube } from "@feng3d/core";
-import { oav } from "@feng3d/objectview";
-import { ObjectAsset } from "../ObjectAsset";
+import { AssetType, setAssetTypeClass, TextureCube } from '@feng3d/core';
+import { oav } from '@feng3d/objectview';
+import { ObjectAsset } from '../ObjectAsset';
 
 /**
  * 立方体纹理资源
  */
 export class TextureCubeAsset extends ObjectAsset
 {
-    static extenson = ".json";
+    static extenson = '.json';
 
     /**
      * 材质
      */
-    @oav({ component: "OAVObjectView" })
+    @oav({ component: 'OAVObjectView' })
     declare data: TextureCube;
 
     assetType = AssetType.texturecube;
@@ -23,12 +23,12 @@ export class TextureCubeAsset extends ObjectAsset
     }
 }
 
-setAssetTypeClass("texturecube", TextureCubeAsset);
+setAssetTypeClass('texturecube', TextureCubeAsset);
 
 declare global
 {
     interface MixinsAssetTypeClassMap
     {
-        "texturecube": new () => TextureCubeAsset;
+        'texturecube': new () => TextureCubeAsset;
     }
 }

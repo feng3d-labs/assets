@@ -1,7 +1,7 @@
-import { Node3D, AssetType, Entity } from "@feng3d/core";
-import { oav } from "@feng3d/objectview";
-import { serialization } from "@feng3d/serialization";
-import { ObjectAsset } from "../ObjectAsset";
+import { Node3D, AssetType, Entity } from '@feng3d/core';
+import { oav } from '@feng3d/objectview';
+import { serialization } from '@feng3d/serialization';
+import { ObjectAsset } from '../ObjectAsset';
 
 export interface Node3DAsset
 {
@@ -16,12 +16,12 @@ export class Node3DAsset extends ObjectAsset
     /**
      * 材质
      */
-    @oav({ component: "OAVObjectView" })
+    @oav({ component: 'OAVObjectView' })
     declare data: Node3D;
 
     assetType = AssetType.node3d;
 
-    static extenson = ".json";
+    static extenson = '.json';
 
     initAsset()
     {
@@ -31,9 +31,10 @@ export class Node3DAsset extends ObjectAsset
 
     protected _getAssetData()
     {
-        var node = serialization.clone(this.data);
+        const node = serialization.clone(this.data);
         delete node.assetId;
         node.prefabId = this.assetId;
+
         return node;
     }
 }

@@ -1,5 +1,5 @@
-import { AssetType } from "@feng3d/core";
-import { ArrayBufferAsset } from "../ArrayBufferAsset";
+import { AssetType } from '@feng3d/core';
+import { ArrayBufferAsset } from '../ArrayBufferAsset';
 
 /**
  * 音效资源

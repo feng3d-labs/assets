@@ -1,4 +1,4 @@
-import { FileAsset } from "@feng3d/core";
+import { FileAsset } from '@feng3d/core';
 
 /**
  * 二进制 资源
@@ -12,7 +12,7 @@ export class ArrayBufferAsset extends FileAsset
 
     /**
      * 保存文件
-     * 
+     *
      * @param callback 完成回调
      */
     saveFile(callback?: (err: Error) => void)
@@ -22,7 +22,7 @@ export class ArrayBufferAsset extends FileAsset
 
     /**
      * 读取文件
-     * 
+     *
      * @param callback 完成回调
      */
     readFile(callback?: (err: Error) => void)
@@ -31,6 +31,6 @@ export class ArrayBufferAsset extends FileAsset
         {
             this.arraybuffer = data;
             callback && callback(err);
-        })
+        });
     }
 }

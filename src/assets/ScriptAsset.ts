@@ -1,17 +1,17 @@
-import { AssetType, regExps, setAssetTypeClass } from "@feng3d/core";
-import { watch } from "@feng3d/watcher";
-import { TextAsset } from "./TextAsset";
+import { AssetType, regExps, setAssetTypeClass } from '@feng3d/core';
+import { watch } from '@feng3d/watcher';
+import { TextAsset } from './TextAsset';
 
 /**
  * 脚本资源
  */
 export class ScriptAsset extends TextAsset
 {
-    static extenson = ".ts";
+    static extenson = '.ts';
 
-    assetType = AssetType.script
+    assetType = AssetType.script;
 
-    @watch("_invalidate")
+    @watch('_invalidate')
     declare textContent: string;
 
     /**
@@ -20,6 +20,7 @@ export class ScriptAsset extends TextAsset
     get parentScriptName()
     {
         this._update();
+
         return this._parentScriptName;
     }
     private _parentScriptName: string;
@@ -30,6 +31,7 @@ export class ScriptAsset extends TextAsset
     get scriptName()
     {
         this._update();
+
         return this._scriptName;
     }
     private _scriptName: string;
@@ -38,7 +40,7 @@ export class ScriptAsset extends TextAsset
 
     initAsset()
     {
-        this.textContent = this.textContent || "";
+        this.textContent = this.textContent || '';
     }
 
     private _invalidate()
@@ -53,37 +55,37 @@ export class ScriptAsset extends TextAsset
 
         if (!this.textContent)
         {
-            this._scriptName = "";
+            this._scriptName = '';
+
             return;
         }
 
         // 获取脚本类名称
-        var result = regExps.classReg.exec(this.textContent);
+        let result = regExps.classReg.exec(this.textContent);
         console.assert(result != null, `在脚本 ${this.assetPath} 中没有找到 脚本类定义`);
-        var script = result[3];
+        let script = result[3];
         if (result[5])
         {
-            this._parentScriptName = result[5].split(".").pop();
+            this._parentScriptName = result[5].split('.').pop();
         }
         // 获取导出类命名空间
         if (result[1])
         {
             result = regExps.namespace.exec(this.textContent);
             console.assert(result != null, `获取脚本 ${this.assetPath} 命名空间失败`);
-            script = result[1] + "." + script;
+            script = `${result[1]}.${script}`;
         }
 
         this._scriptName = script;
     }
-
 }
 
-setAssetTypeClass("script", ScriptAsset);
+setAssetTypeClass('script', ScriptAsset);
 
 declare global
 {
     interface MixinsAssetTypeClassMap
     {
-        "script": new () => ScriptAsset;
+        'script': new () => ScriptAsset;
     }
 }

@@ -1,11 +1,11 @@
-import { AssetType, setAssetTypeClass } from "@feng3d/core";
-import { TextAsset } from "./TextAsset";
+import { AssetType, setAssetTypeClass } from '@feng3d/core';
+import { TextAsset } from './TextAsset';
 
 declare global
 {
     interface MixinsAssetTypeClassMap
     {
-        "js": new () => JSAsset;
+        'js': new () => JSAsset;
     }
 }
 
@@ -14,7 +14,7 @@ declare global
  */
 export class JSAsset extends TextAsset
 {
-    static extenson = ".js";
+    static extenson = '.js';
 
     assetType = AssetType.js;
 
@@ -22,7 +22,7 @@ export class JSAsset extends TextAsset
 
     initAsset()
     {
-        this.textContent = this.textContent || "";
+        this.textContent = this.textContent || '';
     }
 }
-setAssetTypeClass("js", JSAsset);
+setAssetTypeClass('js', JSAsset);

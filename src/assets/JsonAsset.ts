@@ -1,12 +1,12 @@
-import { AssetType, setAssetTypeClass } from "@feng3d/core";
-import { TextAsset } from "./TextAsset";
+import { AssetType, setAssetTypeClass } from '@feng3d/core';
+import { TextAsset } from './TextAsset';
 
 /**
  * JSON 资源
  */
 export class JsonAsset extends TextAsset
 {
-    static extenson = ".json";
+    static extenson = '.json';
 
     assetType = AssetType.json;
 
@@ -14,17 +14,16 @@ export class JsonAsset extends TextAsset
 
     initAsset()
     {
-        this.textContent = this.textContent || "{}";
+        this.textContent = this.textContent || '{}';
     }
 }
 
-setAssetTypeClass("json", JsonAsset);
-
+setAssetTypeClass('json', JsonAsset);
 
 declare global
 {
     interface MixinsAssetTypeClassMap
     {
-        "json": new () => JsonAsset;
+        'json': new () => JsonAsset;
     }
 }
