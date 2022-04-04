@@ -1,1 +1,1 @@
-# assets
+# @feng3d/assets
