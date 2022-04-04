@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { AssetMeta, AssetType, FileAsset, Texture2D } from '@feng3d/core';
 import { oav } from '@feng3d/objectview';
 import { gPartial } from '@feng3d/polyfill';
@@ -19,9 +20,14 @@ export class TextureAsset extends FileAsset
     /**
      * 图片
      */
-    get image() { return <any> this.data._pixels; }
+    get image()
+    {
+        // @ts-ignore
+        return this.data._pixels;
+    }
     set image(v: HTMLImageElement)
     {
+        // @ts-ignore
         this.data._pixels = v;
         this.saveFile();
     }
@@ -52,6 +58,7 @@ export class TextureAsset extends FileAsset
     {
         this.rs.fs.readImage(this.assetPath, (err, img: HTMLImageElement) =>
         {
+            // @ts-ignore
             this.data._pixels = img;
             callback && callback(err);
         });

@@ -62,7 +62,7 @@ export class ScriptAsset extends TextAsset
 
         // 获取脚本类名称
         let result = regExps.classReg.exec(this.textContent);
-        console.assert(result != null, `在脚本 ${this.assetPath} 中没有找到 脚本类定义`);
+        console.assert(result !== null, `在脚本 ${this.assetPath} 中没有找到 脚本类定义`);
         let script = result[3];
         if (result[5])
         {
@@ -72,7 +72,7 @@ export class ScriptAsset extends TextAsset
         if (result[1])
         {
             result = regExps.namespace.exec(this.textContent);
-            console.assert(result != null, `获取脚本 ${this.assetPath} 命名空间失败`);
+            console.assert(result !== null, `获取脚本 ${this.assetPath} 命名空间失败`);
             script = `${result[1]}.${script}`;
         }
 
