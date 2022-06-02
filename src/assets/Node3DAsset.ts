@@ -1,4 +1,5 @@
-import { Node3D, AssetType, Entity } from '@feng3d/core';
+import { AssetType, Node3D } from '@feng3d/core';
+import { Entity } from '@feng3d/ecs';
 import { oav } from '@feng3d/objectview';
 import { serialization } from '@feng3d/serialization';
 import { ObjectAsset } from '../ObjectAsset';

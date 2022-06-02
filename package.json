@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "@feng3d/core": "0.4.0",
+    "@feng3d/ecs": "0.0.1",
     "@feng3d/event": "0.4.1",
     "@feng3d/objectview": "0.4.1",
     "@feng3d/serialization": "0.4.0",
