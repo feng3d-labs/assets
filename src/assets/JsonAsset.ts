@@ -1,29 +1,25 @@
-import { AssetType, setAssetTypeClass } from '@feng3d/core';
-import { TextAsset } from './TextAsset';
-
-/**
- * JSON 资源
- */
-export class JsonAsset extends TextAsset
+namespace feng3d
 {
-    static extenson = '.json';
-
-    assetType = AssetType.json;
-
-    declare textContent: string;
-
-    initAsset()
+    /**
+     * JSON 资源
+     */
+    export class JsonAsset extends TextAsset
     {
-        this.textContent = this.textContent || '{}';
+        static extenson = '.json';
+
+        assetType = AssetType.json;
+
+        textContent: string;
+
+        initAsset()
+        {
+            this.textContent = this.textContent || '{}';
+        }
     }
-}
 
-setAssetTypeClass('json', JsonAsset);
-
-declare global
-{
-    interface MixinsAssetTypeClassMap
+    export interface AssetTypeClassMap
     {
         'json': new () => JsonAsset;
     }
+    setAssetTypeClass('json', JsonAsset);
 }

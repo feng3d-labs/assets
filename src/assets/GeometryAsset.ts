@@ -1,35 +1,30 @@
-import { AssetType, CubeGeometry, Geometry, setAssetTypeClass } from '@feng3d/core';
-import { oav } from '@feng3d/objectview';
-import { ObjectAsset } from '../ObjectAsset';
-
-/**
- * 几何体资源
- */
-export class GeometryAsset extends ObjectAsset
+namespace feng3d
 {
-    static extenson = '.json';
-
     /**
-     * 几何体
+     * 几何体资源
      */
-    @oav({ component: 'OAVObjectView' })
-    declare data: Geometry;
-
-    assetType = AssetType.geometry;
-
-    initAsset()
+    export class GeometryAsset extends ObjectAsset
     {
-        this.data = this.data || new CubeGeometry();
-        this.data.assetId = this.data.assetId || this.assetId;
+        static extenson = '.json';
+
+        /**
+         * 几何体
+         */
+        @oav({ component: 'OAVObjectView' })
+        data: Geometry;
+
+        assetType = AssetType.geometry;
+
+        initAsset()
+        {
+            this.data = this.data || new CubeGeometry();
+            this.data.assetId = this.data.assetId || this.assetId;
+        }
     }
-}
 
-setAssetTypeClass('geometry', GeometryAsset);
-
-declare global
-{
-    interface MixinsAssetTypeClassMap
+    export interface AssetTypeClassMap
     {
         'geometry': new () => GeometryAsset;
     }
+    setAssetTypeClass('geometry', GeometryAsset);
 }

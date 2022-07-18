@@ -1,22 +1,18 @@
-import { AssetType, setAssetTypeClass } from '@feng3d/core';
-import { ScriptAsset } from './ScriptAsset';
-
-/**
- * 着色器 资源
- */
-export class ShaderAsset extends ScriptAsset
+namespace feng3d
 {
-    static extenson = '.ts';
+    /**
+     * 着色器 资源
+     */
+    export class ShaderAsset extends ScriptAsset
+    {
+        static extenson = '.ts';
 
-    assetType = AssetType.shader;
-}
+        assetType = AssetType.shader;
+    }
 
-setAssetTypeClass('shader', ShaderAsset);
-
-declare global
-{
-    interface MixinsAssetTypeClassMap
+    export interface AssetTypeClassMap
     {
         'shader': new () => ShaderAsset;
     }
+    setAssetTypeClass('shader', ShaderAsset);
 }
