@@ -1,8 +1,8 @@
 import { ok } from 'assert';
 
-describe('task', () =>
+describe('test', () =>
 {
-    it('series', () =>
+    it('test', () =>
     {
         ok(true);
     });

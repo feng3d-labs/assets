@@ -1,42 +1,25 @@
 {
     "compilerOptions": {
         "target": "ES5",
+        "module": "CommonJS",
         "noImplicitAny": false,
         "sourceMap": true,
         "declarationMap": true,
         "declaration": true,
-        "composite": true,
         "experimentalDecorators": true,
         "lib": [
-            "ES2017",
-            "DOM"
+            "ES2015",
+            "DOM",
         ],
-        "outFile": "./dist/index.js",
+        "outDir": "lib"
     },
-    "files": [
-        //
-        "../event/index.d.ts",
-        "../polyfill/index.d.ts",
-        "../objectview/index.d.ts",
-        "../watcher/index.d.ts",
-        "../serialization/index.d.ts",
-        "../math/index.d.ts",
-        "../filesystem/index.d.ts",
-        "../renderer/index.d.ts",
-        "../core/index.d.ts",
-        // assets
-        "src/ArrayBufferAsset.ts",
-        "src/assets/TextAsset.ts",
-        "src/ObjectAsset.ts",
-        "src/assets/ScriptAsset.ts",
-        "src/assets/ShaderAsset.ts",
-        "src/assets/JSAsset.ts",
-        "src/assets/JsonAsset.ts",
-        "src/assets/AudioAsset.ts",
-        "src/assets/TextureAsset.ts",
-        "src/assets/TextureCubeAsset.ts",
-        "src/assets/GeometryAsset.ts",
-        "src/assets/MaterialAsset.ts",
-        "src/assets/GameObjectAsset.ts",
-    ]
+    "include": [
+        "src/**/*.ts"
+    ],
+    "ts-node": {
+        "files": true,
+        "compilerOptions": {
+            "esModuleInterop": true
+        }
+    }
 }

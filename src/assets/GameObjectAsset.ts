@@ -1,37 +1,40 @@
-namespace feng3d
+import { AssetType, GameObject } from '@feng3d/core';
+import { oav } from '@feng3d/objectview';
+import { serialization } from '@feng3d/serialization';
+import { ObjectAsset } from '../ObjectAsset';
+
+export interface GameObjectAsset
 {
-    export interface GameObjectAsset
+    getAssetData(callback?: (result: GameObject) => void): GameObject;
+}
+
+/**
+ * 游戏对象资源
+ */
+export class GameObjectAsset extends ObjectAsset
+{
+    /**
+     * 材质
+     */
+    @oav({ component: 'OAVObjectView' })
+    declare data: GameObject;
+
+    assetType = AssetType.gameobject;
+
+    static extenson = '.json';
+
+    initAsset()
     {
-        getAssetData(callback?: (result: GameObject) => void): GameObject;
+        this.data = this.data || new GameObject();
+        this.data.assetId = this.data.assetId || this.assetId;
     }
 
-    /**
-     * 游戏对象资源
-     */
-    export class GameObjectAsset extends ObjectAsset
+    protected _getAssetData()
     {
-        /**
-         * 材质
-         */
-        @oav({ component: 'OAVObjectView' })
-        data: GameObject;
+        const gameobject = serialization.clone(this.data);
+        delete gameobject.assetId;
+        gameobject.prefabId = this.assetId;
 
-        assetType = AssetType.gameobject;
-
-        static extenson = '.json';
-
-        initAsset()
-        {
-            this.data = this.data || new GameObject();
-            this.data.assetId = this.data.assetId || this.assetId;
-        }
-
-        protected _getAssetData()
-        {
-            var gameobject = serialization.clone(this.data);
-            delete gameobject.assetId;
-            gameobject.prefabId = this.assetId;
-            return gameobject;
-        }
+        return gameobject;
     }
 }

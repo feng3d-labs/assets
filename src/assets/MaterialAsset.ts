@@ -1,29 +1,34 @@
-namespace feng3d
+import { AssetType, Material, setAssetTypeClass } from '@feng3d/core';
+import { oav } from '@feng3d/objectview';
+import { ObjectAsset } from '../ObjectAsset';
+
+declare global
 {
-    /**
-     * 材质资源
-     */
-    export class MaterialAsset extends ObjectAsset
-    {
-        static extenson = '.json';
-
-        /**
-         * 材质
-         */
-        @oav({ component: 'OAVObjectView' })
-        data: Material;
-
-        assetType = AssetType.material;
-
-        initAsset()
-        {
-            this.data = this.data || new Material();
-        }
-    }
-
-    export interface AssetTypeClassMap
+    export interface MixinsAssetTypeClassMap
     {
         'material': new () => MaterialAsset;
     }
-    setAssetTypeClass('material', MaterialAsset);
 }
+
+/**
+ * 材质资源
+ */
+export class MaterialAsset extends ObjectAsset
+{
+    static extenson = '.json';
+
+    /**
+     * 材质
+     */
+    @oav({ component: 'OAVObjectView' })
+    declare data: Material;
+
+    assetType = AssetType.material;
+
+    initAsset()
+    {
+        this.data = this.data || new Material();
+    }
+}
+
+setAssetTypeClass('material', MaterialAsset);
