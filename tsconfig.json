@@ -15,9 +15,6 @@
     },
     "references": [
         {
-            "path": "../renderer"
-        },
-        {
             "path": "../core"
         },
     ],
@@ -30,6 +27,7 @@
         "../serialization/index.d.ts",
         "../math/index.d.ts",
         "../filesystem/index.d.ts",
+        "../renderer/index.d.ts",
         // assets
         "src/ArrayBufferAsset.ts",
         "src/assets/TextAsset.ts",
