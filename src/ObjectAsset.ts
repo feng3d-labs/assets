@@ -1,4 +1,4 @@
-import { AssetData, FileAsset } from '@feng3d/core';
+import { FileAsset, AssetData } from '@feng3d/core';
 import { objectEmitter } from '@feng3d/event';
 import { oav } from '@feng3d/objectview';
 import { serialization } from '@feng3d/serialization';

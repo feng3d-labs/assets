@@ -1,5 +1,13 @@
-import { FileAsset, AssetType, setAssetTypeClass } from '@feng3d/core';
+import { AssetType, FileAsset, setAssetTypeClass } from '@feng3d/core';
 import { oav } from '@feng3d/objectview';
+
+declare global
+{
+    export interface MixinsAssetTypeClassMap
+    {
+        'txt': new () => TextAsset;
+    }
+}
 
 /**
  * 文本 资源
@@ -11,7 +19,7 @@ export class TextAsset extends FileAsset
     assetType = AssetType.txt;
 
     @oav({ component: 'OAVMultiText' })
-        textContent: string;
+    textContent: string;
 
     initAsset()
     {
@@ -39,11 +47,3 @@ export class TextAsset extends FileAsset
 }
 
 setAssetTypeClass('txt', TextAsset);
-
-declare global
-{
-    interface MixinsAssetTypeClassMap
-    {
-        'txt': new () => TextAsset;
-    }
-}

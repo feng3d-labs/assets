@@ -1,6 +1,14 @@
-import { Material, AssetType, setAssetTypeClass } from '@feng3d/core';
+import { AssetType, Material, setAssetTypeClass } from '@feng3d/core';
 import { oav } from '@feng3d/objectview';
 import { ObjectAsset } from '../ObjectAsset';
+
+declare global
+{
+    export interface MixinsAssetTypeClassMap
+    {
+        'material': new () => MaterialAsset;
+    }
+}
 
 /**
  * 材质资源
@@ -24,11 +32,3 @@ export class MaterialAsset extends ObjectAsset
 }
 
 setAssetTypeClass('material', MaterialAsset);
-
-declare global
-{
-    interface MixinsAssetTypeClassMap
-    {
-        'material': new () => MaterialAsset;
-    }
-}

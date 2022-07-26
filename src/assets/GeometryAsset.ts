@@ -2,6 +2,14 @@ import { AssetType, CubeGeometry, Geometry, setAssetTypeClass } from '@feng3d/co
 import { oav } from '@feng3d/objectview';
 import { ObjectAsset } from '../ObjectAsset';
 
+declare global
+{
+    export interface MixinsAssetTypeClassMap
+    {
+        'geometry': new () => GeometryAsset;
+    }
+}
+
 /**
  * 几何体资源
  */
@@ -25,11 +33,3 @@ export class GeometryAsset extends ObjectAsset
 }
 
 setAssetTypeClass('geometry', GeometryAsset);
-
-declare global
-{
-    interface MixinsAssetTypeClassMap
-    {
-        'geometry': new () => GeometryAsset;
-    }
-}

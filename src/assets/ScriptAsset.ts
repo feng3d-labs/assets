@@ -2,6 +2,14 @@ import { AssetType, regExps, setAssetTypeClass } from '@feng3d/core';
 import { watch } from '@feng3d/watcher';
 import { TextAsset } from './TextAsset';
 
+declare global
+{
+    export interface MixinsAssetTypeClassMap
+    {
+        'script': new () => ScriptAsset;
+    }
+}
+
 /**
  * 脚本资源
  */
@@ -81,11 +89,3 @@ export class ScriptAsset extends TextAsset
 }
 
 setAssetTypeClass('script', ScriptAsset);
-
-declare global
-{
-    interface MixinsAssetTypeClassMap
-    {
-        'script': new () => ScriptAsset;
-    }
-}

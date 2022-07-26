@@ -3,7 +3,7 @@ import { TextAsset } from './TextAsset';
 
 declare global
 {
-    interface MixinsAssetTypeClassMap
+    export interface MixinsAssetTypeClassMap
     {
         'js': new () => JSAsset;
     }
@@ -25,4 +25,5 @@ export class JSAsset extends TextAsset
         this.textContent = this.textContent || '';
     }
 }
+
 setAssetTypeClass('js', JSAsset);
